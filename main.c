@@ -14,6 +14,7 @@
 #include "utils/grid.h"
 #include "utils/errors.h"
 #include "utils/misc.h"
+#include "utils/grid_logic.h"
 
 int	main(int argn, char **args)
 {

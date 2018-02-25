@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "grid.h"
+#include "misc.h"
+#include "str_util.h"
 int str_len(char *e)
 {
 	int index;
@@ -18,4 +21,23 @@ int str_len(char *e)
 	while (e[index])
 		index++;
 	return index;
+}
+
+void print_grid(grid e)
+{
+	int y;
+	
+	y = 0;
+	while (y < MAX_INDEX)
+		print_line(e.blocks[y++]);
+}
+
+void print_line(int *p)
+{
+	int x;
+	
+	x = 0;
+	while (x < MAX_INDEX)
+		put_char((p[x++]) + 48);
+	put_char('\n');
 }

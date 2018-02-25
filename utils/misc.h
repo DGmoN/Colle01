@@ -12,7 +12,9 @@
 
 #ifndef MISC_H
 # define MISC_H
-
+void print_line(int *p);
 int str_len(char *e);
+void print_grid(grid e);
+
 
 #endif

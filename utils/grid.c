@@ -14,6 +14,7 @@
 #include "misc.h"
 #include "grid_logic.h"
 #include "str_util.h"
+#include "errors.h"
 
 
 
@@ -25,39 +26,32 @@ int init_line(char *e, int linen, grid *g)
 
 	len = str_len(e);
 	if (len != MAX_INDEX)
-	{
-		put_str("The string is not the right length: ");
-		put_str(e);
-		put_str("\n");
-		return (0);
-	}
+		str_len_error(e);
 	
 	count = 0;
 	while (count < MAX_INDEX)
 	{
-		if (e[count] == '.')
-			init_value(count, linen, '0', g);
-		else
-			init_value(count, linen, e[count], g);
+		if(!init_value(count, linen, e[count], g))
+			return (0);
 		count++;
 	}
 	return (1);
 }
 
-void init_value(int x, int y, char value, grid *e)
+int init_value(int x, int y, char value, grid *e)
 {
-	if (value_preceeds(value - '0', y, x, *e) && value != '0')
-	{
-		put_str("the value is already in use: ");
-		put_char(value);
-		put_char('\n');
-		return;
-	}
-	e->blocks[y][x] = value - '0';
-	if (value != '0')
-		e->unchangeable[y][x] = &e->blocks[y][x]; 
+	int real_value;
+	
+	if (value == '.')
+		real_value = 0;
 	else
-		e->unchangeable[y][x] = 0; 
+		real_value = value - '0';
+	
+	if (value_preceeds(real_value, y, x, *e))
+		return value_in_use(real_value, y);
+	e->blocks[y][x] = real_value;
+	e->unchangeable[y][x] = &e->blocks[y][x];  
+	return (1);
 }
 
 int is_slot_editable(int slot, int line, grid e)

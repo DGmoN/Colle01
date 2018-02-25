@@ -11,11 +11,14 @@
 /* ************************************************************************** */
 
 #include "grid.h"
-
+#include "misc.h"
 int value_preceeds(int value, int line, int start, grid e)
 {
 	int index;
 
+	if (value == 0)
+		return (0);
+	
 	index = start;
 	while (index >= 0)
 	{

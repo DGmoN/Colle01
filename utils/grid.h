@@ -22,7 +22,7 @@ typedef struct	s_grid
 }				grid;
 
 int init_line(char *e, int linen, grid *g);
-void init_value(int x, int y, char value, grid *e);
+int init_value(int x, int y, char value, grid *e);
 
 
 #endif

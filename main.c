@@ -12,16 +12,15 @@
 
 #include "utils/str_util.h"
 #include "utils/grid.h"
+#include "utils/errors.h"
+#include "utils/misc.h"
 
 int	main(int argn, char **args)
 {
 	int index;
 
 	if (argn - 1 != MAX_INDEX)
-	{
-		put_str("You need 9 arguments for this to work.\n");
-		return (-1);
-	}
+		return (insufficient_args());
 
 	grid sodoku;
 	index = 0;
@@ -31,14 +30,7 @@ int	main(int argn, char **args)
 			return (-1);
 		index++;
 	}
-	index = 0;
-	int ind2 = 0;
-	while (index < MAX_INDEX)
-	{
-		ind2 = 0;
-		while(ind2 < MAX_INDEX)
-			put_char(sodoku.blocks[index][ind2++] + '0');
-		put_char('\n');
-		index++;
-	}
+	
+	print_grid(sodoku);
+	
 }

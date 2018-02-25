@@ -72,9 +72,9 @@ void	fill_sod(struct s_sod e)
 	index = 0;
 	while (index < END_OF_SOD)
 	{
-		has_slot = sod_has_val(e, index);
+		has_slot = sod_has_val(e, index + 1);
 		if (!has_slot)
-			check_and_change(e, index);
+			check_and_change(e, index + 1);
 		index++;
 	}	
 }

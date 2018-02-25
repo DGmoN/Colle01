@@ -24,7 +24,9 @@ sod_line *parse_sod(char *e)
 		if (e[index] == '.')
 			ret[index] = 0;
 		else
-			ret[index] = '0' - ret[index];
+		{
+			ret[index] = e[index] - '0';
+		}
 		index++;
 	}
 	rsod = make_line(ret);

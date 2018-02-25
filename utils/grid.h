@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   grid.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/25 13:26:15 by wgourley          #+#    #+#             */
-/*   Updated: 2018/02/25 14:08:54 by wgourley         ###   ########.fr       */
+/*   Created: 2018/02/25 13:33:48 by wgourley          #+#    #+#             */
+/*   Updated: 2018/02/25 14:02:08 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef GRID_H
+# define GRID_H
+# define MAX_INDEX 9
 
-#include "utils/str_util.h"
-#include "utils/grid.h"
-
-int	main(int argn, char **args)
+typedef struct	s_grid
 {
-	int index;
+	int		blocks[MAX_INDEX][MAX_INDEX];
+	int		*unchangeable[MAX_INDEX][MAX_INDEX];
+	int		*rows[MAX_INDEX];
+	int		*columns[MAX_INDEX];
+}				grid;
 
-	if (argn - 1 < 9)
-	{
-		put_str("You need 9 arguments for this to work.\n");
-		return (-1);
-	}
+void init_line(char *e, int linen, grid g);
+void init_value(int x, int y, char value, grid e);
 
-	grid sodoku;
-	index = 0;
-	while (index < MAX_INDEX)
-	{
-		init_line(args[index + 1], index, sodoku);
-		index++;
-	}
-}
+
+#endif

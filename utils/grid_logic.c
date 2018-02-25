@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   grid_logic.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/25 13:26:15 by wgourley          #+#    #+#             */
-/*   Updated: 2018/02/25 14:08:54 by wgourley         ###   ########.fr       */
+/*   Created: 2018/02/25 13:45:59 by wgourley          #+#    #+#             */
+/*   Updated: 2018/02/25 14:04:11 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils/str_util.h"
-#include "utils/grid.h"
+#include "grid.h"
 
-int	main(int argn, char **args)
+int value_preceeds(int value, int line, int start, grid e)
 {
 	int index;
 
-	if (argn - 1 < 9)
+	index = start;
+	while (index >= 0)
 	{
-		put_str("You need 9 arguments for this to work.\n");
-		return (-1);
+		if (e.blocks[line][index] == value)
+			return (1);
+		index--;
 	}
-
-	grid sodoku;
-	index = 0;
-	while (index < MAX_INDEX)
-	{
-		init_line(args[index + 1], index, sodoku);
-		index++;
-	}
+	return (0);
 }

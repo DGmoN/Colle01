@@ -32,5 +32,6 @@ int	main(int argn, char **args)
 	}
 	
 	print_grid(sodoku);
+	printf("%i %i", get_lowest_value(sodoku, 0), get_first_empty(sodoku, 0));
 	
 }

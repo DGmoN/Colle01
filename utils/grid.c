@@ -16,9 +16,6 @@
 #include "str_util.h"
 #include "errors.h"
 
-
-
-
 int init_line(char *e, int linen, grid *g)
 {
 	int len;
@@ -52,6 +49,41 @@ int init_value(int x, int y, char value, grid *e)
 	e->blocks[y][x] = real_value;
 	e->unchangeable[y][x] = &e->blocks[y][x];  
 	return (1);
+}
+
+int get_lowest_value(grid e, int row)
+{
+	int x;
+	int holder;
+	
+	x = 0;
+	holder = 1;
+	while (holder < MAX_INDEX)
+	{
+		while (x < MAX_INDEX)
+		{
+			if (e.blocks[row][x] == holder)
+				holder++;
+			x++;
+		}
+		if (x == MAX_INDEX)
+			break;
+	}
+	return (holder);
+}
+
+int get_first_empty(grid e, int line)
+{
+	int x;
+	
+	x = 0;
+	while (x < MAX_INDEX)
+	{
+		if (is_slot_editable(x, line, e) && e.blocks[line][x] == 0)
+			return (x);
+		x++;
+	}
+	return (0);
 }
 
 int is_slot_editable(int slot, int line, grid e)

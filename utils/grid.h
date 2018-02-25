@@ -23,6 +23,8 @@ typedef struct	s_grid
 
 int init_line(char *e, int linen, grid *g);
 int init_value(int x, int y, char value, grid *e);
-
+int get_lowest_value(grid e, int row);
+int is_slot_editable(int slot, int line, grid e);
+int get_first_empty(grid e, int line);
 
 #endif

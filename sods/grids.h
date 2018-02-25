@@ -2,7 +2,7 @@
 # define 	GRIDS_H
 # define	MK_LINE(e) 		make_line(e)
 # define	SOD_SUM(e) 		sum_of_sod(e)
-# define	END_OF_SOD		9
+# define	END_OF_SOD		10
 # define	RESOLVE(s)		fill_sod(s)
 
 typedef	struct	s_slot

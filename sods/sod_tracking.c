@@ -37,5 +37,5 @@ int	get_first_empty(struct s_sod e)
 	index = 0;
 	while (index != END_OF_SOD)
 		if (e.numbers[index++].value == 0)
-			return (index);
+			return (index - 1);
 }

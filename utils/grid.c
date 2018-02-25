@@ -83,7 +83,7 @@ int get_first_empty(grid e, int line)
 			return (x);
 		x++;
 	}
-	return (0);
+	return (-1);
 }
 
 int is_slot_editable(int slot, int line, grid e)

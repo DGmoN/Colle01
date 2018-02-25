@@ -32,6 +32,21 @@ int	main(int argn, char **args)
 	}
 	
 	print_grid(sodoku);
-	printf("%i %i", get_lowest_value(sodoku, 0), get_first_empty(sodoku, 0));
-	
+	int modfier = 0;
+	int lowest;
+	int empty;
+	index = 0;
+	int line = 0;
+	while (index < MAX_INDEX)
+	{
+		lowest = get_lowest_value(sodoku, line);
+		empty = get_first_empty(sodoku, line);
+		if (!value_preceeds_vertical(lowest, empty, 0, sodoku))
+		{
+			sodoku.blocks[line][empty] = lowest;
+		}
+		index++;
+	}
+	put_str("------------------------\n");
+	print_grid(sodoku);
 }

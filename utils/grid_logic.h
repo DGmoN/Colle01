@@ -14,5 +14,6 @@
 # define GRID_LOGIC_H
 
 int value_preceeds(int value, int line, int start, grid e);
+int value_preceeds_vertical(int value, int line, int start, grid e);
 
 #endif

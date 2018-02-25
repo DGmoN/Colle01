@@ -12,17 +12,34 @@
 
 #include "grid.h"
 #include "misc.h"
-int value_preceeds(int value, int line, int start, grid e)
+int value_preceeds(int value, int line, int skip, grid e)
 {
 	int index;
 
 	if (value == 0)
 		return (0);
 	
-	index = start;
+	index = 0;
 	while (index >= 0)
 	{
-		if (e.blocks[line][index] == value)
+		if (e.blocks[line][index] == value && index != skip)
+			return (1);
+		index--;
+	}
+	return (0);
+}
+
+int value_preceeds_vertical(int value, int line, int skip, grid e)
+{
+	int index;
+
+	if (value == 0)
+		return (0);
+	
+	index = 0;
+	while (index >= 0)
+	{
+		if (e.blocks[index][line] == value && index != skip)
 			return (1);
 		index--;
 	}
